@@ -69,7 +69,8 @@ BookGen.processFiles = function(config, files) {
         .replace('href="appendix.html"', 'href="#appendix"') +
     footer
         .replace(/{{prev}}/g, 'index.html')
-        .replace(/{{next}}/g, 'index.html')
+        .replace(/{{next}}/g, 'index.html'),
+    function(err, written, buffer) {}
     );
   fs.writeFile(config.output+'ebook.html',
     header.replace(/<link[^>]+>/g, '')
@@ -87,7 +88,8 @@ BookGen.processFiles = function(config, files) {
         .replace('href="appendix.html"', 'href="#appendix"') +
     footer
         .replace(/{{prev}}/g, 'index.html')
-        .replace(/{{next}}/g, 'index.html')
+        .replace(/{{next}}/g, 'index.html'),
+    function(err, written, buffer) {}
     );
 };
 
