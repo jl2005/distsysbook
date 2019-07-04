@@ -8,7 +8,6 @@
 The replication problem is one of many problems in distributed systems. I've chosen to focus on it over other problems such as leader election, failure detection, mutual exclusion, consensus and global snapshots because it is often the part that people are most interested in. One way in which parallel databases are differentiated is in terms of their replication features, for example. Furthermore, replication provides a context for many subproblems, such as leader election, failure detection, consensus and atomic broadcast.
 -->
 
-// TODO 是专注于当前问题，还是其它问题？
 复制问题是分布式系统中的许多问题之一。我选择专注于其他问题，例如 leader 选举、失败检测、互斥，共识和全局快照，因为它通常是人们最感兴趣的部分。区分并行数据库的一种方式他们的复制功能。此外，复制为许多子问题提供了上下文，例如领导者选举，故障检测，共识和原子广播。
 
 <!--
