@@ -1,24 +1,58 @@
+# %chapter_number%. 时间和顺序
+
+什么是顺序，它为什么重要？
+
+你的意思是“什么是顺序”吗？
+
+<!--
 # %chapter_number%. Time and order
 
 What is order and why is it important?
 
 What do you mean "what is order"?
+-->
 
+<!--
 I mean, why are we so obsessed with order in the first place? Why do we care whether A happened before B? Why don't we care about some other property, like "color"?
 
 Well, my crazy friend, let's go back to the definition of distributed systems to answer that.
+-->
 
+我的意思是，为什么我们首先如此着迷于顺序呢？为什么我们关心A是否发生在B之前？为什么我们不关心其他一些属性，比如“颜色”？
+
+好吧，我疯狂的朋友，让我们回到分布式系统的定义来回答这个问题。
+
+<!--
 As you may remember, I described distributed programming as the art of solving the same problem that you can solve on a single computer using multiple computers.
 
 This is, in fact, at the core of the obsession with order. Any system that can only do one thing at a time will create a total order of operations. Like people passing through a single door, every operation will have a well-defined predecessor and successor. That's basically the programming model that we've worked very hard to preserve.
+-->
 
+您可能还记得，我将分布式编程描述为：像使用单台计算机一样，使用多台计算机解决相同问题的艺术。
+
+事实上，这是我们对顺序痴迷的核心。一次只能做一件事的任何操作系统都会创建一个完整的操作顺序。就像人穿过一个门，每个操作都会有一个明确定义的前驱和后继。这是我们努力保持的最基本的编程模型。
+
+<!--
 The traditional model is: a single program, one process, one memory space running on one CPU. The operating system abstracts away the fact that there might be multiple CPUs and multiple programs, and that the memory on the computer is actually shared among many programs. I'm not saying that threaded programming and event-oriented programming don't exist; it's just that they are special abstractions on top of the "one/one/one" model. Programs are written to be executed in an ordered fashion: you start from the top, and then go down towards the bottom.
+-->
 
+传统模型是：一个程序、一个进程、一个CPU上运行的一个内存空间。操作系统隐藏了可能存在多个CPU和多个程序的事实，并且计算机上的内存实际上是许多程序之间共享。我不是说线程编程和面向事件的编程不存在；它们只是“1:1:1”模型上的抽象。程序以有序的方式执行：从顶部开始，向下移动到底部。
+
+<!--
 Order as a property has received so much attention because the easiest way to define "correctness" is to say "it works like it would on a single machine". And that usually means that a) we run the same operations and b) that we run them in the same order - even if there are multiple machines.
 
 The nice thing about distributed systems that preserve order (as defined for a single system) is that they are generic. You don't need to care about what the operations are, because they will be executed exactly like on a single machine. This is great because you know that you can use the same system no matter what the operations are.
+-->
 
+顺序作为一个属性受到了如此多的关注，因为定义“正确性”最简单的方式是说“它像在一台机器上工作一样”。这通常意味着：a) 我们运行着同样的操作; b) 我们以相同的顺序运行他们，即使有多台机器。
+
+像单机一样保持顺序的分布式系统的好处是它们是通用的。你无须关心操作是什么，因为他们将像在单机一样精确的执行。这很好，因为无论操作什么，都可以使用相同的系统。
+
+<!--
 In reality, a distributed program runs on multiple nodes; with multiple CPUs and multiple streams of operations coming in. You can still assign a total order, but it requires either accurate clocks or some form of communication. You could timestamp each operation using a completely accurate clock then use that to figure out the total order. Or you might have some kind of communication system that makes it possible to assign sequential numbers as in a total order.
+-->
+
+实际上，分布式程序运行在多个节点上；使用多个CPU和多个操作流进入。你仍然可以分配全局顺序，但是需要准确的全局时钟或某种形式的通信。你可以使用完全准确的时钟为每个操作添加时间戳，然后使用它作为全局顺序。或者你可能拥有某种通信系统，按照全局顺序分配序号。
 
 ## Total and partial order
 
